@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function page() {
+export default function Tickets() {
   return (
     <main>
-      <h2>Latest</h2>
+      <h2>Tickets</h2>
     </main>
   );
 }
