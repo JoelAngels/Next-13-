@@ -1,8 +1,15 @@
 import React from "react";
 
 //fetch api to fetch the data
+//since this will be updating almost every hour, we need to revalidate the data , so we add another second argument which is an object
 async function getTickets() {
-  const response = await fetch("http://localhost:4000/tickets");
+  const response = await fetch("http://localhost:4000/tickets", {
+    //the amount of time next should wait since the last page visit before revelaidating the data again
+    next: {
+      revalidate: 0, //use o to out put of using cache
+      // revalidate: 30,
+    },
+  });
   //grab the data,
   return response.json();
 }
