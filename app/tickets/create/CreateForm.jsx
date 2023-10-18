@@ -35,7 +35,7 @@ export default function CreateForm() {
     // check the reponse status, success request
     if (response.status === 201) {
       router.refresh();
-      router.push("../../tickets");
+      router.push("/tickets");
     }
   };
   return (
