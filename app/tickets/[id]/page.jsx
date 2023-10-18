@@ -1,5 +1,18 @@
+import { notFound } from "next/navigation";
 import React from "react";
 
+// export const dynamicParams = false
+
+//in build time for production, it is going to make all the routes and pages ahead of time, this will mean performance will be way better, all pages are pre-rendeed
+export async function generateStaticParams() {
+  const response = await fetch(`http://localhost:4000/tickets`);
+
+  const tickets = await response.json();
+
+  return tickets.map((ticket) => ({
+    id: ticket.id,
+  }));
+}
 async function getTicket(id) {
   const response = await fetch(`http://localhost:4000/tickets/${id}`, {
     next: {
@@ -7,6 +20,10 @@ async function getTicket(id) {
     },
   });
 
+  //   run this code is the response is not okay
+  if (!response.ok) {
+    notFound();
+  }
   return response.json();
 }
 //access the id using params
