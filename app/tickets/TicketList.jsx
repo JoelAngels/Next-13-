@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 //fetch api to fetch the data
@@ -22,15 +23,23 @@ export default async function TicketList() {
 
   return (
     // lets now map through the tickets
+    //next step is click on
+    /*
+    Click on one of these tickets.
+    Navigate to a details page for that ticket, 
+    Route should be "/tickets/id"
+    */
     <>
       {tickets.map((ticket) => (
         <div key={ticket.id} className="card my-5">
-          <h3>{ticket.title}</h3>
-          <p>{ticket.body.slice(0, 200)} ...</p>
-          <div className={`pill ${ticket.priority}`}>
-            {ticket.priority} priority
-          </div>
-          <h3>{ticket.user_email}</h3>
+          <Link href={`/tickets/${ticket.id}`}>
+            <h3>{ticket.title}</h3>
+            <p>{ticket.body.slice(0, 200)} ...</p>
+            <div className={`pill ${ticket.priority}`}>
+              {ticket.priority} priority
+            </div>
+            <h3>{ticket.user_email}</h3>
+          </Link>
         </div>
       ))}
       {tickets.length === 0 && (
