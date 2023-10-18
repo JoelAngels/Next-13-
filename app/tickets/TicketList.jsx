@@ -4,6 +4,7 @@ import React from "react";
 //fetch api to fetch the data
 //since this will be updating almost every hour, we need to revalidate the data , so we add another second argument which is an object
 async function getTickets() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const response = await fetch("http://localhost:4000/tickets", {
     //the amount of time next should wait since the last page visit before revelaidating the data again
     next: {
