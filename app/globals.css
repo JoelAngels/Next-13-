@@ -82,7 +82,7 @@ form button {
 }
 
 /* feedback styles */
-.error {
+/* .error {
   @apply border-2 
     border-red-500 
     bg-red-300
@@ -92,7 +92,7 @@ form button {
     block
     max-w-fit
     my-4 mx-auto;
-}
+} */
 
 /* card styles */
 .card {
